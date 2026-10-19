@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rocket, Ham & Cheese – Fresh Sandwiches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,600;1,700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="item" data-name="Rocket, Ham & Cheese">
+<header class="top"><a href="index.html"><img src="logo-dark.png" alt="Fresh Sandwiches – home"></a></header>
+<main>
+  <a class="back" href="index.html">&larr; Back to menu</a>
+  <h1 class="page-title">Rocket, Ham &amp; Cheese</h1>
+  <p class="lead">Sliced ham, cheddar cheese, fresh rocket and mayo.</p>
+  <section class="card">
+    <div class="tags"><span>Contains:</span><span class="t">Gluten</span><span class="t">Dairy</span><span class="t">Egg</span></div>
+
+    <label for="bread">Bread</label>
+    <select id="bread"></select>
+
+    <label for="note">Want it a little different?</label>
+    <textarea id="note" placeholder="e.g. no mayo, extra rocket"></textarea>
+
+    <div class="addrow">
+      <div class="qty"><button type="button" id="minus" aria-label="Fewer">&minus;</button><output id="qty">1</output><button type="button" id="plus" aria-label="More">+</button></div>
+      <button type="button" class="btn add" id="add">Add to order</button>
+    </div>
+
+    <div class="added" id="added">
+      <p>Added to your order ✓</p>
+      <a class="btn alt" href="index.html">Add another sandwich</a>
+      <a class="btn go" href="order.html">View my order</a>
+    </div>
+  </section>
+</main>
+<a class="bar" id="bar" href="order.html">View my order (<span id="count">0</span>)</a>
+<script src="app.js"></script>
+</body>
+</html>
