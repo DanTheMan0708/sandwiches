@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your order – Fresh Sandwiches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,600;1,700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="order">
+<header class="top"><a href="index.html"><img src="logo-dark.png" alt="Fresh Sandwiches – home"></a></header>
+<main>
+  <a class="back" href="index.html">&larr; Add another sandwich</a>
+  <h1 class="page-title">Your order</h1>
+  <section class="card" id="order">
+    <div id="lines"></div>
+    <p class="empty" id="empty">Nothing here yet. <a href="index.html" style="color:var(--red);font-weight:700">Pick a sandwich from the menu.</a></p>
+
+    <div id="details" hidden>
+      <label for="name">Your name</label>
+      <input id="name" autocomplete="name">
+      <label for="phone">Phone number</label>
+      <input id="phone" type="tel" autocomplete="tel">
+      <label for="how">Delivery or collection</label>
+      <select id="how"><option>Delivery to my house</option><option>I will collect</option></select>
+      <label for="address">House / unit number</label>
+      <input id="address" autocomplete="street-address">
+      <div class="row2">
+        <div><label for="date">Date</label><input id="date" type="date"></div>
+        <div><label for="time">Time</label><select id="time"></select></div>
+      </div>
+      <label for="gnotes">Anything else about your order?</label>
+      <textarea id="gnotes" placeholder="e.g. allergies, gate code"></textarea>
+      <div class="err" id="err"></div>
+      <button class="btn big" id="send" type="button">Send my order on WhatsApp</button>
+      <p class="note">Your order opens in WhatsApp. Send it and I’ll confirm with you.</p>
+    </div>
+  </section>
+  <footer>Allergies? Please tell me in the notes when you order.</footer>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
