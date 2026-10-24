@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Build your own – Fresh Sandwiches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,600;1,700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="build">
+<header class="top"><a href="index.html"><img src="logo-dark.png" alt="Fresh Sandwiches – home"></a></header>
+<main>
+  <a class="back" href="index.html">&larr; Back to menu</a>
+  <h1 class="page-title">Build your own</h1>
+  <p class="lead">Choose your bread, then mix and match your fillings, cheese, salad and sauces.</p>
+  <section class="card">
+    <label for="bread">Bread</label>
+    <select id="bread"></select>
+
+    <fieldset class="g-red"><legend>Fillings <small>(pick as many as you like)</small></legend>
+      <div class="chips"><label class="chip"><input type="checkbox" name="fillings" value="Ham"><span>Ham</span></label><label class="chip"><input type="checkbox" name="fillings" value="Chicken"><span>Chicken</span></label><label class="chip"><input type="checkbox" name="fillings" value="Bacon"><span>Bacon</span></label><label class="chip"><input type="checkbox" name="fillings" value="Roast beef"><span>Roast beef</span></label><label class="chip"><input type="checkbox" name="fillings" value="Tuna"><span>Tuna</span></label><label class="chip"><input type="checkbox" name="fillings" value="Egg"><span>Egg</span></label></div>
+      <select class="sub" data-for="Chicken" aria-label="How would you like your chicken?"><option>Grilled chicken</option><option>Chicken mayo</option></select>
+    </fieldset>
+    <fieldset class="g-orange"><legend>Cheese <small>(pick as many as you like)</small></legend>
+      <div class="chips"><label class="chip"><input type="checkbox" name="cheese" value="Cheddar"><span>Cheddar</span></label><label class="chip"><input type="checkbox" name="cheese" value="Gouda"><span>Gouda</span></label><label class="chip"><input type="checkbox" name="cheese" value="Mozzarella"><span>Mozzarella</span></label><label class="chip"><input type="checkbox" name="cheese" value="Feta"><span>Feta</span></label><label class="chip"><input type="checkbox" name="cheese" value="Cream cheese"><span>Cream cheese</span></label></div>
+    </fieldset>
+    <fieldset class="g-green"><legend>Salad / extras <small>(pick as many as you like)</small></legend>
+      <div class="chips"><label class="chip"><input type="checkbox" name="salad" value="Rocket"><span>Rocket</span></label><label class="chip"><input type="checkbox" name="salad" value="Lettuce"><span>Lettuce</span></label><label class="chip"><input type="checkbox" name="salad" value="Tomato"><span>Tomato</span></label><label class="chip"><input type="checkbox" name="salad" value="Cucumber"><span>Cucumber</span></label><label class="chip"><input type="checkbox" name="salad" value="Avocado"><span>Avocado</span></label><label class="chip"><input type="checkbox" name="salad" value="Gherkins"><span>Gherkins</span></label><label class="chip"><input type="checkbox" name="salad" value="Onion"><span>Onion</span></label></div>
+      <select class="sub" data-for="Onion" aria-label="Which onion?"><option>Raw red onion</option><option>Caramelised onion</option><option>Pickled onion</option></select>
+    </fieldset>
+    <fieldset class="g-navy"><legend>Sauces <small>(pick as many as you like)</small></legend>
+      <div class="chips"><label class="chip"><input type="checkbox" name="sauces" value="Mayo"><span>Mayo</span></label><label class="chip"><input type="checkbox" name="sauces" value="Mustard"><span>Mustard</span></label><label class="chip"><input type="checkbox" name="sauces" value="Chutney"><span>Chutney</span></label><label class="chip"><input type="checkbox" name="sauces" value="Pesto"><span>Pesto</span></label><label class="chip"><input type="checkbox" name="sauces" value="Butter"><span>Butter</span></label></div>
+      <select class="sub" data-for="Mustard" aria-label="Which mustard?"><option>Dijon mustard</option><option>Normal mustard</option><option>Wholegrain mustard</option></select>
+      <select class="sub" data-for="Pesto" aria-label="Which pesto?"><option>Basil pesto</option><option>Olive tapenade</option><option>Sundried tomato pesto</option></select>
+    </fieldset>
+
+    <label for="note">Anything else? Allergies or a special request</label>
+    <textarea id="note" placeholder="e.g. cut in half, I’m allergic to nuts"></textarea>
+
+    <div class="err" id="builderr">Please pick at least one filling, cheese, salad or sauce first.</div>
+    <div class="addrow">
+      <div class="qty"><button type="button" id="minus" aria-label="Fewer">&minus;</button><output id="qty">1</output><button type="button" id="plus" aria-label="More">+</button></div>
+      <button type="button" class="btn add" id="add">Add to order</button>
+    </div>
+
+    <div class="added" id="added">
+      <p>Added to your order ✓</p>
+      <a class="btn alt" href="index.html">Add another sandwich</a>
+      <a class="btn go" href="order.html">View my order</a>
+    </div>
+  </section>
+  <p class="note" style="color:var(--leaf)">Allergens: all breads contain gluten. Cheese, butter and basil pesto contain dairy. Mayo and egg contain egg. Tuna is fish and pestos may contain nuts.</p>
+</main>
+<a class="bar" id="bar" href="order.html">View my order (<span id="count">0</span>)</a>
+<script src="app.js"></script>
+</body>
+</html>
