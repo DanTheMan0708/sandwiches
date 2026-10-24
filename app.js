@@ -49,6 +49,38 @@ if (page === "item") {
   };
 }
 
+// ---------- Build your own page ----------
+if (page === "build") {
+  var bbread = $("bread");
+  BREADS.forEach(function (b) { bbread.appendChild(el("option", { text: b })); });
+  var bq = 1;
+  $("minus").onclick = function () { if (bq > 1) { bq--; $("qty").textContent = bq; } };
+  $("plus").onclick = function () { if (bq < 20) { bq++; $("qty").textContent = bq; } };
+  [].slice.call(document.querySelectorAll(".chips input")).forEach(function (c) {
+    var sub = document.querySelector('select.sub[data-for="' + c.value + '"]');
+    if (sub) c.addEventListener("change", function () { sub.classList.toggle("show", c.checked); });
+  });
+  var picked = function (name) {
+    return [].slice.call(document.querySelectorAll('input[name="' + name + '"]:checked')).map(function (x) {
+      var sub = document.querySelector('select.sub[data-for="' + x.value + '"]');
+      return sub ? x.value + " (" + sub.value + ")" : x.value;
+    });
+  };
+  $("add").onclick = function () {
+    var groups = [["Fillings", "fillings"], ["Cheese", "cheese"], ["Salad / extras", "salad"], ["Sauces", "sauces"]], lines = [];
+    groups.forEach(function (g) { var p = picked(g[1]); if (p.length) lines.push(g[0] + ": " + p.join(", ")); });
+    if (!lines.length) { $("builderr").style.display = "block"; return; }
+    $("builderr").style.display = "none";
+    var cart = loadCart();
+    cart.push({ name: "Build your own", bread: bbread.value, qty: bq, note: $("note").value.trim(), details: lines.join("\n") });
+    saveCart(cart);
+    $("added").classList.add("show");
+    $("add").hidden = true;
+    updateBar();
+    $("added").scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+}
+
 // ---------- Order page ----------
 if (page === "order") {
   var d = $("date"), t = new Date(); t.setDate(t.getDate() + 1);
@@ -61,6 +93,7 @@ if (page === "order") {
     var cart = loadCart(), lines = $("lines"); lines.textContent = "";
     cart.forEach(function (l, i) {
       var left = el("div", {}, [el("b", { text: l.qty + " × " + l.name }), el("small", { text: l.bread })]);
+      if (l.details) l.details.split("\n").forEach(function (d) { left.appendChild(el("small", { text: d })); });
       if (l.note) left.appendChild(el("small", { text: "Note: " + l.note }));
       var minus = el("button", { type: "button", "aria-label": "Fewer", text: "−" });
       var plus = el("button", { type: "button", "aria-label": "More", text: "+" });
@@ -84,7 +117,7 @@ if (page === "order") {
     err.style.display = "none";
     var msg = "Hi! I’d like to order:\n\n";
     cart.forEach(function (l) {
-      msg += "🥪 " + l.qty + " × " + l.name + "\n   " + l.bread + "\n" + (l.note ? "   Note: " + l.note + "\n" : "") + "\n";
+      msg += "🥪 " + l.qty + " × " + l.name + "\n   " + l.bread + "\n" + (l.details ? "   " + l.details.split("\n").join("\n   ") + "\n" : "") + (l.note ? "   Note: " + l.note + "\n" : "") + "\n";
     });
     msg += "Name: " + v("name") + "\nPhone: " + v("phone") + "\n" + v("how") + (v("address") ? " – " + v("address") : "") + "\nDate: " + v("date") + " at " + v("time");
     if (v("gnotes")) msg += "\nExtra notes: " + v("gnotes");
