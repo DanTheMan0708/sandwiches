@@ -12,23 +12,39 @@
 <body data-page="menu">
 <header class="hero">
   <img src="logo-dark.png" alt="Fresh Sandwiches – made to order">
-  <p>Tap a sandwich to choose your bread, add it to your order and send it on WhatsApp.</p>
+  <p>Fresh sandwiches, made to order and delivered right to your door in the estate.</p>
+  <div class="pills"><span>Order 1 day ahead</span><span>Made fresh</span><span>Delivered 14:00 to 19:00</span></div>
 </header>
 <main>
-  <div class="pills"><span>Order 1 day ahead</span><span>Made fresh</span><span>Delivered in the estate</span></div>
   <h2>The menu</h2>
-  <!-- To add a sandwich: copy one card below, change the link and text, then copy a sandwich page (see README) -->
+  <!-- To add a sandwich: copy one block below, change the link, colour class (c1, c2 or c3) and text -->
   <div id="menu">
-    <a class="card" href="chicken-mayo.html">
-      <h3>Chicken Mayo</h3>
-      <p class="desc">Chicken mayo with gherkins and cucumber.</p>
-      <span class="more">Choose &rarr;</span>
+    <a class="block c1" href="chicken-mayo.html">
+      <div><h3>Chicken Mayo</h3><p>Chicken mayo with gherkins and cucumber.</p></div>
+      <span class="arrow" aria-hidden="true">&rarr;</span>
     </a>
-    <a class="card" href="rocket-ham-cheese.html">
-      <h3>Rocket, Ham &amp; Cheese</h3>
-      <p class="desc">Sliced ham, cheddar cheese, fresh rocket and mayo.</p>
-      <span class="more">Choose &rarr;</span>
+    <a class="block c2" href="rocket-ham-cheese.html">
+      <div><h3>Rocket, Ham &amp; Cheese</h3><p>Sliced ham, cheddar cheese, fresh rocket and mayo.</p></div>
+      <span class="arrow" aria-hidden="true">&rarr;</span>
     </a>
+    <a class="block diy" href="build-your-own.html">
+      <div><span class="tag">Make it yours</span><h3>Build your own</h3><p>Pick your bread, fillings, cheese, salad and sauces.</p></div>
+      <span class="arrow" aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+
+  <h2>How it works</h2>
+  <section class="card">
+    <ol class="steps">
+      <li><span class="n">1</span><div><b>Pick a sandwich</b><span>Choose from the menu or build your own.</span></div></li>
+      <li><span class="n">2</span><div><b>Choose your bread</b><span>Tell me if you want anything done differently.</span></div></li>
+      <li><span class="n">3</span><div><b>Send your order on WhatsApp</b><span>Order at least a day ahead and I’ll confirm with you.</span></div></li>
+    </ol>
+  </section>
+
+  <div class="contact">
+    <p>Questions or allergies? Message me any time.</p>
+    <a href="https://wa.me/27713875231">WhatsApp 071 387 5231</a>
   </div>
 </main>
 <a class="bar" id="bar" href="order.html">View my order (<span id="count">0</span>)</a>
